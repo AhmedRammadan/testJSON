@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 Toast.makeText(MainActivity.this,response.toString(), Toast.LENGTH_SHORT).show();
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -88,12 +90,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String , String > map = new HashMap<>();
-
                 map.put("userId",userId);
                 map.put("Id",Id);
                 map.put("title",title);
                 map.put("body",body);
-
                 return map;
             }
 
@@ -105,6 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 return header;
             }
         };
-
+        Volley.newRequestQueue(this).add(request);
     }
 }
